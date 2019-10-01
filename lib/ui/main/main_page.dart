@@ -45,8 +45,6 @@ class _MainPageState extends State<MainPage> {
         onDidChange: _onDidChange,
         converter: MainViewModel.fromStore,
         builder: (BuildContext context, MainViewModel vm) {
-          print(vm.shouldShowNoInternet);
-          print(vm.isLoading);
           if (vm.isLoading) {
             return Container(
               color: Colors.white,
@@ -66,6 +64,27 @@ class _MainPageState extends State<MainPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text("No internet connection"),
+                      FlatButton(
+                        child: Text("Retry"),
+                        onPressed: () {
+                          vm.loadData();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          } else if (vm.error != null) {
+            return Container(
+              color: Colors.white,
+              child: Center(
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(vm.error.toString()),
                       FlatButton(
                         child: Text("Retry"),
                         onPressed: () {

@@ -16,7 +16,7 @@ class DetailsPageArguments {
 }
 
 class DetailsPage extends StatefulWidget {
-  DetailsPageArguments arguments;
+  final DetailsPageArguments arguments;
 
   DetailsPage({this.arguments});
 

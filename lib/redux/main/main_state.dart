@@ -38,7 +38,7 @@ class MainState extends Equatable {
   }) {
     return MainState(
       isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error,
+      error: error,
       elements: elements ?? this.elements,
       shouldShowNoInternet: shouldShowNoInternet ?? this.shouldShowNoInternet,
     );
