@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:gridview_transition/data/constants/app_routes.dart';
 import 'package:gridview_transition/redux/base/app_state.dart';
 import 'package:gridview_transition/redux/base/app_store.dart';
+import 'package:gridview_transition/ui/details/details_page.dart';
 import 'package:gridview_transition/ui/main/main_page.dart';
 import 'package:redux/redux.dart';
 
@@ -27,7 +29,9 @@ class GridViewAppState extends State<GridViewApp> {
       child: MaterialApp(
         home: MainPage(),
         onGenerateRoute: (RouteSettings settings) {
-          final routes = <String, WidgetBuilder>{};
+          final routes = <String, WidgetBuilder>{
+            AppRoutes.details: (context) => DetailsPage(arguments: settings.arguments,),
+          };
 
           final builder = routes[settings.name];
           return MaterialPageRoute(
